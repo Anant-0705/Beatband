@@ -13,14 +13,23 @@ body {
 }
 
 :root {
-  --hover-lift-amount: 4px;
-  --hover-scale-amount: 1.03;
-  --hover-subtle-zoom-amount: 1.015;
-  --hover-shadow-color: var(--color-shadow);
-  --hover-transition-duration: 0.25s;
-  --hover-transition-timing: ease-out;
-  --surface-transition-duration: 0.3s;
-  --surface-transition-timing: var(--ease-out-quad);
+  --hover-lift-amount: 8px;
+  --hover-scale-amount: 1.05;
+  --hover-subtle-zoom-amount: 1.08;
+  --hover-shadow-color: rgba(99, 102, 241, 0.2);
+  --hover-transition-duration: 0.3s;
+  --hover-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --surface-transition-duration: 0.4s;
+  --surface-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Enhanced spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 6rem;
 }
 
 html {

@@ -1,0 +1,726 @@
+/*
+ * BeatBand Responsive Enhancements
+ * Mobile-first, device-optimized styling
+ */
+
+/* ========================================
+   MOBILE OPTIMIZATIONS (< 750px)
+   ======================================== */
+
+@media screen and (max-width: 749px) {
+  /* Enhanced mobile typography */
+  :root {
+    --font-size-mobile-h1: 2.5rem;
+    --font-size-mobile-h2: 2rem;
+    --font-size-mobile-h3: 1.5rem;
+    --font-size-mobile-body: 1rem;
+    --spacing-mobile: 1rem;
+  }
+  
+  /* Mobile header */
+  header,
+  .header {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+  
+  /* Mobile hero sections */
+  .hero,
+  section[class*="hero"] {
+    padding: 2rem 1rem;
+    min-height: 60vh;
+  }
+  
+  .hero::before {
+    animation: meshMove 8s ease-in-out infinite;
+  }
+  
+  /* Mobile product cards */
+  .product-card {
+    border-radius: 12px;
+  }
+  
+  .product-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  .product-card::after {
+    display: none; /* Disable shimmer on mobile for performance */
+  }
+  
+  /* Touch-friendly buttons */
+  .button,
+  .button-primary,
+  .button-secondary {
+    min-height: 48px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 24px;
+  }
+  
+  /* Mobile product grid */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  /* Single column on very small screens */
+  @media screen and (max-width: 400px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Mobile navigation */
+  .header-drawer {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  /* Mobile cart drawer */
+  .cart-drawer {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Mobile forms */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents iOS zoom */
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+  
+  /* Mobile badges */
+  .badge,
+  [class*="badge"] {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+  }
+  
+  /* Mobile product media */
+  .product-media-container {
+    border-radius: 16px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Reduce animation intensity on mobile */
+  .product-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .collection-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  /* Mobile-optimized gradients */
+  .animated-gradient {
+    animation-duration: 12s;
+  }
+  
+  /* Disable 3D effects on mobile */
+  .card-3d:hover .card-3d-inner {
+    transform: none;
+  }
+  
+  .tilt-hover:hover {
+    transform: none;
+  }
+  
+  /* Mobile pricing */
+  .price {
+    font-size: 1.25rem;
+  }
+  
+  /* Mobile spacing */
+  section {
+    padding: 2rem 1rem;
+  }
+  
+  .page-width {
+    padding-inline: 1rem;
+  }
+  
+  /* Mobile announcement bar */
+  .announcement-bar {
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Mobile sticky elements */
+  .sticky-add-to-cart {
+    bottom: 0;
+    padding: 1rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 -4px 20px rgba(99, 102, 241, 0.1);
+  }
+  
+  /* Mobile search */
+  .predictive-search {
+    max-height: 70vh;
+    border-radius: 16px 16px 0 0;
+  }
+  
+  /* Mobile quick view */
+  .quick-add-modal__content {
+    border-radius: 20px 20px 0 0;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  /* Improve touch targets */
+  a,
+  button,
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  /* Mobile product information */
+  .product-information {
+    padding: 1.5rem 1rem;
+  }
+  
+  /* Mobile variant picker */
+  .variant-picker {
+    gap: 0.5rem;
+  }
+  
+  .variant-button {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 0.875rem;
+  }
+  
+  /* Mobile collection list */
+  .collection-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  /* Optimize images for mobile */
+  .card-gallery img,
+  .product-media img {
+    object-fit: cover;
+  }
+  
+  /* Mobile footer */
+  .footer {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .footer__column {
+    margin-bottom: 2rem;
+  }
+}
+
+/* ========================================
+   TABLET OPTIMIZATIONS (750px - 989px)
+   ======================================== */
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  /* Tablet typography */
+  :root {
+    --font-size-tablet-h1: 3rem;
+    --font-size-tablet-h2: 2.5rem;
+    --font-size-tablet-h3: 1.75rem;
+  }
+  
+  /* Tablet product grid */
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  /* Tablet hero */
+  .hero,
+  section[class*="hero"] {
+    padding: 3rem 2rem;
+    min-height: 70vh;
+  }
+  
+  /* Tablet buttons */
+  .button,
+  .button-primary,
+  .button-secondary {
+    padding: 14px 32px;
+  }
+  
+  /* Tablet product cards */
+  .product-card:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+  
+  /* Tablet collection list */
+  .collection-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  /* Tablet cart drawer */
+  .cart-drawer {
+    max-width: 420px;
+  }
+  
+  /* Tablet forms */
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* ========================================
+   DESKTOP OPTIMIZATIONS (> 990px)
+   ======================================== */
+
+@media screen and (min-width: 990px) {
+  /* Desktop product grid - 4 columns */
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  /* Large desktop - 5 columns */
+  @media screen and (min-width: 1400px) {
+    .product-grid[data-columns="5"] {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  
+  /* Desktop hero with full effects */
+  .hero,
+  section[class*="hero"] {
+    padding: 4rem 2rem;
+    min-height: 80vh;
+  }
+  
+  /* Desktop product cards with full effects */
+  .product-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(99, 102, 241, 0.25);
+  }
+  
+  /* Desktop collection grid */
+  .collection-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  /* Desktop cart drawer */
+  .cart-drawer {
+    max-width: 480px;
+  }
+  
+  /* Desktop product page layout */
+  .product-information {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  /* Desktop media gallery */
+  .media-gallery {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+  }
+}
+
+/* ========================================
+   ULTRA-WIDE OPTIMIZATIONS (> 1600px)
+   ======================================== */
+
+@media screen and (min-width: 1600px) {
+  /* Max width for ultra-wide */
+  .page-width {
+    max-width: 1600px;
+    margin-inline: auto;
+  }
+  
+  /* Ultra-wide product grid */
+  .product-grid[data-columns="auto"] {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  /* Ultra-wide hero */
+  .hero,
+  section[class*="hero"] {
+    min-height: 90vh;
+  }
+}
+
+/* ========================================
+   LANDSCAPE MOBILE (< 750px height)
+   ======================================== */
+
+@media screen and (max-height: 749px) and (orientation: landscape) {
+  /* Reduce hero height in landscape */
+  .hero,
+  section[class*="hero"] {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+  
+  /* Reduce header in landscape */
+  header,
+  .header {
+    padding-block: 0.5rem;
+  }
+  
+  /* Optimize modals for landscape */
+  .modal,
+  .drawer {
+    max-height: 90vh;
+  }
+}
+
+/* ========================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ======================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .product-card:hover::before,
+  .product-card:hover::after {
+    display: none;
+  }
+  
+  /* Use active states instead */
+  .product-card:active {
+    transform: scale(0.98);
+  }
+  
+  .button:active {
+    transform: scale(0.95);
+  }
+  
+  /* Larger touch targets */
+  .variant-picker button,
+  .color-swatch {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  /* Disable subtle animations */
+  .shimmer,
+  .particle,
+  .music-note {
+    display: none;
+  }
+}
+
+/* ========================================
+   HIGH RESOLUTION DISPLAYS
+   ======================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Enhance shadows for retina */
+  .product-card,
+  .collection-card {
+    box-shadow: 
+      0 2px 8px rgba(99, 102, 241, 0.08),
+      0 8px 32px rgba(99, 102, 241, 0.12);
+  }
+  
+  /* Crisper borders */
+  .button,
+  input,
+  textarea,
+  select {
+    border-width: 1px;
+  }
+}
+
+/* ========================================
+   FOLDABLE DEVICES
+   ======================================== */
+
+@media (min-width: 750px) and (max-width: 989px) and (orientation: portrait) {
+  /* Tablet portrait - foldable devices */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .product-information {
+    display: block;
+  }
+  
+  .media-gallery {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY ENHANCEMENTS
+   ======================================== */
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .button-primary {
+    border: 3px solid currentColor;
+  }
+  
+  .product-card {
+    border: 2px solid currentColor;
+  }
+  
+  .gradient-border,
+  .text-gradient {
+    border: 2px solid currentColor;
+    background: transparent;
+    color: currentColor;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-sm: 0 2px 8px rgba(139, 92, 246, 0.2);
+    --shadow-md: 0 4px 16px rgba(139, 92, 246, 0.25);
+    --shadow-lg: 0 8px 32px rgba(139, 92, 246, 0.3);
+  }
+  
+  .glass-effect {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  header,
+  .header {
+    background: rgba(0, 0, 0, 0.8) !important;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  /* Hide interactive elements */
+  header,
+  .header,
+  .footer,
+  .cart-drawer,
+  .announcement-bar,
+  .sticky-add-to-cart,
+  button,
+  .button {
+    display: none !important;
+  }
+  
+  /* Optimize for printing */
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .product-card,
+  .collection-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  /* Show links */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}
+
+/* ========================================
+   DEVICE-SPECIFIC OPTIMIZATIONS
+   ======================================== */
+
+/* iPhone notch support */
+@supports (padding-top: env(safe-area-inset-top)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .header {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .sticky-add-to-cart {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Samsung fold support */
+@media (min-width: 653px) and (max-width: 884px) {
+  .product-information {
+    display: block;
+  }
+  
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Reduce motion on lower-end devices */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .hero::before,
+  .animated-mesh,
+  .particle {
+    animation: none !important;
+  }
+}
+
+/* Connection speed optimizations */
+@media (prefers-reduced-data: reduce) {
+  /* Disable background images */
+  .hero::before,
+  .animated-mesh {
+    display: none;
+  }
+  
+  /* Disable video backgrounds */
+  video[autoplay] {
+    display: none;
+  }
+  
+  /* Reduce image quality */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* ========================================
+   CUSTOM BREAKPOINTS FOR SPECIFIC LAYOUTS
+   ======================================== */
+
+/* Medium screens - 3 column layout */
+@media screen and (min-width: 750px) and (max-width: 1199px) {
+  .product-grid--adaptive {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .collection-list--adaptive {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Small desktop - 4 column layout */
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .product-grid--adaptive {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ========================================
+   HOVER DEVICE OPTIMIZATIONS
+   ======================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  /* Enhanced hover effects for mouse users */
+  .product-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .product-card:hover {
+    will-change: transform, box-shadow;
+  }
+  
+  /* Magnetic buttons for mouse users */
+  .button-primary {
+    transition: transform 0.2s ease;
+  }
+}
+
+/* ========================================
+   CONTAINER QUERIES (Modern browsers)
+   ======================================== */
+
+@supports (container-type: inline-size) {
+  .product-card {
+    container-type: inline-size;
+    container-name: product-card;
+  }
+  
+  @container product-card (min-width: 300px) {
+    .product-card__content {
+      padding: 1rem;
+    }
+  }
+  
+  @container product-card (min-width: 400px) {
+    .product-card__content {
+      padding: 1.5rem;
+    }
+  }
+}
+
+/* ========================================
+   FLEXIBLE GRID SYSTEM
+   ======================================== */
+
+.responsive-grid {
+  display: grid;
+  gap: var(--spacing-md, 1.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+@media screen and (min-width: 750px) {
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  }
+}
+
+/* ========================================
+   VIEWPORT UNITS WITH FALLBACKS
+   ======================================== */
+
+.full-height {
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height */
+}
+
+.min-full-height {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ========================================
+   SMOOTH FONT SCALING
+   ======================================== */
+
+@media screen and (min-width: 320px) {
+  :root {
+    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  :root {
+    font-size: 16px;
+  }
+}

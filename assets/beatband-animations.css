@@ -1,0 +1,598 @@
+/*
+ * BeatBand Custom Animations
+ * Specialized animations for Bluetooth Headband store
+ */
+
+/* ========================================
+   HEADBAND SPECIFIC ANIMATIONS
+   ======================================== */
+
+/* Sound wave animation for hero sections */
+@keyframes soundwave {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.5);
+  }
+}
+
+.soundwave-bar {
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: var(--gradient-primary);
+  margin: 0 2px;
+  border-radius: 2px;
+  animation: soundwave 1s ease-in-out infinite;
+}
+
+.soundwave-bar:nth-child(1) { animation-delay: 0s; }
+.soundwave-bar:nth-child(2) { animation-delay: 0.1s; }
+.soundwave-bar:nth-child(3) { animation-delay: 0.2s; }
+.soundwave-bar:nth-child(4) { animation-delay: 0.3s; }
+.soundwave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+/* Beat pulse animation */
+@keyframes beatPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.beat-pulse {
+  animation: beatPulse 1.2s ease-in-out infinite;
+}
+
+/* Wireless signal animation */
+@keyframes wireless {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.wireless-indicator::before,
+.wireless-indicator::after {
+  content: '';
+  position: absolute;
+  border: 2px solid var(--beatband-primary);
+  border-radius: 50%;
+  animation: wireless 2s ease-out infinite;
+}
+
+.wireless-indicator::after {
+  animation-delay: 1s;
+}
+
+/* Music note floating animation */
+@keyframes musicFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.music-note {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0.3;
+  animation: musicFloat 4s ease-in infinite;
+  pointer-events: none;
+}
+
+.music-note:nth-child(odd) {
+  animation-delay: 2s;
+}
+
+/* ========================================
+   PRODUCT REVEAL ANIMATIONS
+   ======================================== */
+
+/* 3D flip effect for product cards */
+.card-3d {
+  perspective: 1000px;
+}
+
+.card-3d-inner {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-3d:hover .card-3d-inner {
+  transform: rotateY(10deg) rotateX(-10deg);
+}
+
+/* Magnetic attraction effect */
+@keyframes magneticPull {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(2px) translateY(-2px);
+  }
+  75% {
+    transform: translateX(-2px) translateY(2px);
+  }
+}
+
+.magnetic-effect:hover {
+  animation: magneticPull 0.3s ease-in-out;
+}
+
+/* ========================================
+   LOADING & TRANSITION ANIMATIONS
+   ======================================== */
+
+/* Music equalizer loader */
+@keyframes equalizerBar {
+  0%, 100% {
+    height: 10px;
+  }
+  50% {
+    height: 40px;
+  }
+}
+
+.equalizer-loader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 50px;
+  height: 40px;
+}
+
+.equalizer-bar {
+  width: 6px;
+  background: var(--gradient-primary);
+  border-radius: 3px;
+  animation: equalizerBar 0.8s ease-in-out infinite;
+}
+
+.equalizer-bar:nth-child(1) { animation-delay: 0s; }
+.equalizer-bar:nth-child(2) { animation-delay: 0.1s; }
+.equalizer-bar:nth-child(3) { animation-delay: 0.2s; }
+.equalizer-bar:nth-child(4) { animation-delay: 0.3s; }
+.equalizer-bar:nth-child(5) { animation-delay: 0.4s; }
+
+/* ========================================
+   SCROLL REVEAL ANIMATIONS
+   ======================================== */
+
+/* Fade in from left */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reveal-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+/* Fade in from right */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reveal-right {
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+/* Scale in animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reveal-scale {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* ========================================
+   TEXT EFFECTS
+   ======================================== */
+
+/* Glitch text effect */
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 2px 0 #ff00de, -2px -2px 0 #00ffff;
+  }
+  25% {
+    text-shadow: -2px 2px 0 #ff00de, 2px -2px 0 #00ffff;
+  }
+  50% {
+    text-shadow: 2px -2px 0 #ff00de, -2px 2px 0 #00ffff;
+  }
+  75% {
+    text-shadow: -2px -2px 0 #ff00de, 2px 2px 0 #00ffff;
+  }
+  100% {
+    text-shadow: 2px 2px 0 #ff00de, -2px -2px 0 #00ffff;
+  }
+}
+
+.text-glitch:hover {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--beatband-primary);
+  animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* ========================================
+   INTERACTIVE HOVER EFFECTS
+   ======================================== */
+
+/* Ripple effect on click */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.5);
+  transform: scale(0);
+  animation: ripple 0.6s ease-out;
+  pointer-events: none;
+}
+
+/* Tilt on hover */
+.tilt-hover {
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.tilt-hover:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+}
+
+/* ========================================
+   BACKGROUND PATTERNS
+   ======================================== */
+
+/* Animated gradient mesh */
+@keyframes meshFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animated-mesh {
+  position: absolute;
+  inset: -50%;
+  background: var(--gradient-mesh);
+  animation: meshFloat 20s ease-in-out infinite;
+  filter: blur(40px);
+  opacity: 0.5;
+}
+
+/* Particle system */
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--beatband-primary);
+  border-radius: 50%;
+  animation: particleFloat 10s linear infinite;
+  pointer-events: none;
+}
+
+.particle:nth-child(odd) {
+  animation-duration: 8s;
+  animation-delay: 2s;
+}
+
+.particle:nth-child(3n) {
+  animation-duration: 12s;
+  animation-delay: 4s;
+}
+
+/* ========================================
+   MICRO-INTERACTIONS
+   ======================================== */
+
+/* Button press effect */
+@keyframes buttonPress {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+}
+
+.btn-press:active {
+  animation: buttonPress 0.2s ease-out;
+}
+
+/* Icon bounce on hover */
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.icon-hover:hover {
+  animation: iconBounce 0.5s ease-in-out;
+}
+
+/* Shake effect for errors/notifications */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* ========================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ======================================== */
+
+/* Parallax scrolling */
+.parallax-slow {
+  transition: transform 0.5s cubic-bezier(0, 0, 0, 1);
+}
+
+.parallax-medium {
+  transition: transform 0.3s cubic-bezier(0, 0, 0, 1);
+}
+
+.parallax-fast {
+  transition: transform 0.1s cubic-bezier(0, 0, 0, 1);
+}
+
+/* Sticky reveal animation */
+@keyframes stickyReveal {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.sticky-reveal {
+  animation: stickyReveal 0.4s ease-out;
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+
+/* Spinner with gradient */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-gradient {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top-color: var(--beatband-primary);
+  border-right-color: var(--beatband-secondary);
+  animation: spin 0.8s linear infinite;
+}
+
+/* Pulse loader */
+@keyframes pulseLoad {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.pulse-loader {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  animation: pulseLoad 1.5s ease-in-out infinite;
+}
+
+/* ========================================
+   CARD STACK EFFECT
+   ======================================== */
+
+@keyframes cardStack {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10px) scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.card-stack {
+  position: relative;
+}
+
+.card-stack::before,
+.card-stack::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.card-stack::before {
+  transform: translateY(8px) scale(0.95);
+  opacity: 0.5;
+}
+
+.card-stack::after {
+  transform: translateY(16px) scale(0.9);
+  opacity: 0.3;
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Use will-change for frequently animated elements */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* Remove will-change after animation */
+.animation-complete {
+  will-change: auto;
+}
+
+/* ========================================
+   RESPONSIVE ANIMATIONS
+   ======================================== */
+
+@media (max-width: 749px) {
+  /* Reduce animation intensity on mobile */
+  .product-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  .card-3d:hover .card-3d-inner {
+    transform: rotateY(5deg) rotateX(-5deg);
+  }
+  
+  /* Disable complex animations on mobile */
+  .animated-mesh {
+    animation: none;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations for users who prefer reduced motion */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .soundwave-bar,
+  .beat-pulse,
+  .music-note,
+  .particle {
+    animation: none !important;
+  }
+}

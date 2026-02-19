@@ -1,0 +1,639 @@
+/*
+ * BeatBand Premium Enhancements
+ * Modern, eye-catching UI for Bluetooth Headband Store
+ */
+
+/* ========================================
+   MODERN COLOR SCHEME & GRADIENTS
+   ======================================== */
+
+:root {
+  /* Vibrant tech-inspired colors */
+  --beatband-primary: #6366f1;
+  --beatband-primary-light: #818cf8;
+  --beatband-primary-dark: #4f46e5;
+  --beatband-secondary: #8b5cf6;
+  --beatband-accent: #ec4899;
+  --beatband-success: #10b981;
+  --beatband-glow: #a78bfa;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-vibrant: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-tech: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-purple: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  --gradient-neon: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --gradient-dark: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-mesh: 
+    radial-gradient(at 40% 20%, hsla(260, 77%, 70%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(220, 77%, 70%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(300, 77%, 70%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(180, 77%, 70%, 0.3) 0px, transparent 50%);
+  
+  /* Enhanced shadows */
+  --shadow-sm: 0 2px 8px rgba(99, 102, 241, 0.1);
+  --shadow-md: 0 4px 16px rgba(99, 102, 241, 0.15);
+  --shadow-lg: 0 8px 32px rgba(99, 102, 241, 0.2);
+  --shadow-xl: 0 16px 48px rgba(99, 102, 241, 0.25);
+  --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.4);
+  --shadow-neon: 0 0 30px rgba(236, 72, 153, 0.5);
+  
+  /* Animation timing */
+  --animation-speed-fast: 0.2s;
+  --animation-speed-normal: 0.4s;
+  --animation-speed-slow: 0.6s;
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   GLASSMORPHISM & MODERN EFFECTS
+   ======================================== */
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 16px;
+  background: linear-gradient(white, white) padding-box,
+              var(--gradient-primary) border-box;
+  border: 2px solid transparent;
+}
+
+/* ========================================
+   ENHANCED TYPOGRAPHY
+   ======================================== */
+
+.premium-heading {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.5),
+               0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+/* ========================================
+   MODERN BUTTONS
+   ======================================== */
+
+.button,
+.button-primary,
+.button-secondary {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--animation-speed-normal) var(--ease-smooth);
+}
+
+.button-primary {
+  background: var(--gradient-primary) !important;
+  border: none !important;
+  box-shadow: var(--shadow-md);
+  transform: translateY(0);
+}
+
+.button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.button-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.button-primary:hover::before {
+  left: 100%;
+}
+
+/* ========================================
+   ENHANCED PRODUCT CARDS
+   ======================================== */
+
+.product-card {
+  transition: all var(--animation-speed-normal) var(--ease-smooth);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl), var(--shadow-glow);
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-mesh);
+  opacity: 0;
+  transition: opacity var(--animation-speed-normal);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.product-card:hover::before {
+  opacity: 0.1;
+}
+
+.card-gallery {
+  border-radius: 16px !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-gallery img {
+  transition: transform var(--animation-speed-slow) var(--ease-smooth);
+}
+
+.product-card:hover .card-gallery img {
+  transform: scale(1.1);
+}
+
+/* Add shimmer effect on product cards */
+.product-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  50% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* ========================================
+   HERO SECTION ENHANCEMENTS
+   ======================================== */
+
+.hero,
+section[class*="hero"] {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-mesh);
+  opacity: 0.6;
+  z-index: 0;
+  animation: meshMove 15s ease-in-out infinite;
+}
+
+@keyframes meshMove {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(5%, 5%);
+  }
+  50% {
+    transform: translate(-5%, 5%);
+  }
+  75% {
+    transform: translate(5%, -5%);
+  }
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
+   ANIMATED BACKGROUNDS
+   ======================================== */
+
+.animated-gradient {
+  background: var(--gradient-primary);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ========================================
+   FLOATING ANIMATIONS
+   ======================================== */
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6), 0 0 60px rgba(236, 72, 153, 0.4);
+  }
+}
+
+/* ========================================
+   HEADER ENHANCEMENTS
+   ======================================== */
+
+header,
+.header {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  transition: all var(--animation-speed-normal);
+}
+
+header:hover,
+.header:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 8px 40px rgba(99, 102, 241, 0.1);
+}
+
+/* ========================================
+   PRODUCT PAGE ENHANCEMENTS
+   ======================================== */
+
+.product-media-container {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--animation-speed-normal);
+}
+
+.product-media-container:hover {
+  box-shadow: var(--shadow-xl), var(--shadow-glow);
+  transform: scale(1.02);
+}
+
+/* ========================================
+   SPECIAL EFFECTS & ANIMATIONS
+   ======================================== */
+
+/* Neon border effect */
+.neon-border {
+  position: relative;
+  border-radius: 16px;
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  padding: 2px;
+  background: var(--gradient-primary);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotateBorder 4s linear infinite;
+}
+
+@keyframes rotateBorder {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Magnetic hover effect */
+.magnetic-hover {
+  transition: transform var(--animation-speed-fast) var(--ease-smooth);
+}
+
+.magnetic-hover:hover {
+  transform: scale(1.05);
+}
+
+/* ========================================
+   SCROLL ANIMATIONS
+   ======================================== */
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-animation > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* ========================================
+   ENHANCED COLLECTION SECTIONS
+   ======================================== */
+
+.collection-card {
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all var(--animation-speed-normal) var(--ease-smooth);
+  box-shadow: var(--shadow-md);
+}
+
+.collection-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-xl);
+}
+
+.collection-card__image {
+  transition: transform var(--animation-speed-slow) var(--ease-smooth);
+}
+
+.collection-card:hover .collection-card__image {
+  transform: scale(1.15);
+}
+
+/* ========================================
+   BADGE ENHANCEMENTS
+   ======================================== */
+
+.badge,
+[class*="badge"] {
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-md);
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* ========================================
+   PRICE DISPLAY ENHANCEMENTS
+   ======================================== */
+
+.price {
+  font-weight: 700;
+  color: var(--beatband-primary);
+  text-shadow: 0 2px 10px rgba(99, 102, 241, 0.2);
+}
+
+.price--on-sale {
+  background: var(--gradient-vibrant);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   LOADING & INTERACTIONS
+   ======================================== */
+
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmerLoad 1.5s infinite;
+}
+
+@keyframes shimmerLoad {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ========================================
+   FOOTER ENHANCEMENTS
+   ======================================== */
+
+.footer {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-primary);
+}
+
+/* ========================================
+   CART DRAWER ENHANCEMENTS
+   ======================================== */
+
+.cart-drawer {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.cart-drawer__inner {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* ========================================
+   ANNOUNCEMENT BAR
+   ======================================== */
+
+.announcement-bar {
+  background: var(--gradient-primary) !important;
+  color: white !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  animation: slideIn 0.6s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   RESPONSIVE OPTIMIZATIONS
+   ======================================== */
+
+@media (max-width: 749px) {
+  .product-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  .hero::before {
+    animation: meshMove 10s ease-in-out infinite;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY & PERFORMANCE
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .button-primary {
+    border: 2px solid currentColor !important;
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-vibrant {
+  background: var(--gradient-vibrant);
+}
+
+.bg-gradient-tech {
+  background: var(--gradient-tech);
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.hover-lift {
+  transition: transform var(--animation-speed-normal);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* ========================================
+   SMOOTH SCROLLING
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--beatband-primary-dark);
+}
